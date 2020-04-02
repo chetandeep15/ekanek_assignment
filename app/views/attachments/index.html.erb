@@ -1,30 +1,33 @@
 <h1 class="text-center">List of your attachments</h1>
-
-<div class="col-xs-12">
-  <div class="row">
-    <%= link_to "Add attachment", new_attachment_path, class: 'btn btn-primary pull-right' %>
-  </div>
-  <div class="row">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Description</th>
-          <th scope="col">Shareable Link</th>
-          <th scope="col">Action</th>
-
-        </tr>
-      </thead>
-      <tbody>
-        <% @attachments.each do |attachment| %>
+<div class="container">
+  <div class="col-xs-12">
+    <div class="row">
+      <%= link_to "Add attachment", new_attachment_path, class: 'btn btn-primary pull-right mb-24' %>
+    </div>
+    <div class="row">
+      <table class="table table-bordered">
+        <thead>
           <tr>
-            <td><%= link_to(attachment.title, attachment.upload, class: 'text-decoration-none') %></td>
-            <td><%= attachment.description %></td>
-            <td><%= "#{GlobalConstant::APP_URL}#{attachment_path(attachment.link_codes.last.code)}"%></td>
-            <td><%= link_to("Delete", attachment_path(attachment) , method: :delete) %></td>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Shareable Link</th>
+            <th scope="col">Action</th>
+
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @attachments.each do |attachment| %>
+            <tr>
+              <td><%= link_to(attachment.title, attachment.upload, class: 'text-decoration-none') %></td>
+              <td><%= attachment.description %></td>
+              <td><%= "#{GlobalConstant::APP_URL}#{attachment_path(attachment.link_codes.last.code)}"%></td>
+              <td><%= link_to("Delete", attachment_path(attachment) , method: :delete) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-  </div>
+</div>
+
+<%= stylesheet_link_tag 'admin' %>

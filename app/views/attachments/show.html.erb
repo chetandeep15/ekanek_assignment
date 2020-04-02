@@ -1,18 +1,30 @@
-<div class="text-center"><h1>Attachment</h1></div>
-
-<div class="col-md-offset-5 col-md-4">
-  <%upload = @attachment.upload%>
-
-  <% if upload.image? %>
-    <%= image_tag(upload, width: 300) %>
-  <% elsif upload.video? %>
-    <%= video_tag(rails_blob_path(upload), controls: true)%>
-  <% elsif upload.audio?%>
-    <%= audio_tag(rails_blob_path(upload), controls: true)%>
-  <% else %>
-   <%= link_to("Download Your File", rails_blob_path(upload, disposition: :attachment)) %>
-  <% end %>
-  <div><%=@attachment.title%></div>
-  <div><%=@attachment.description%></div>
+<div class="text-center"><h1>Uploaded Attachment</h1></div>
+<div class="container">
+  <div class=row>
+    <div class="thumbnail">
+      <%upload = @attachment.upload%>
+      <% if upload.image? %>
+        <%= image_tag(upload, width: 300, class: "mt-18 image-border") %>
+      <% elsif upload.video? %>
+      <div class="pt-18 pl-28">
+        <%= video_tag(rails_blob_path(upload), controls: true, width: 500)%>
+      </div>
+      <% elsif upload.audio?%>
+      <div class="pl-38">
+        <%= audio_tag(rails_blob_path(upload), controls: true, class: "mt-18")%>
+      </div>
+      <% else %>
+      <div class="pl-43 pt-16">
+        <%= link_to("Download Your File", rails_blob_path(upload, disposition: :attachment), class: 'btn btn-primary') %>
+      </div>
+      <% end %>
+      <div class="caption pt-0">
+        <h3 class="text-center"><%= @attachment.title%></h3>
+        <p class="text-center"><%= @attachment.description%></p>
+      </div>
+    </div>
+  </div>
 </div>
+
+<%= stylesheet_link_tag "admin" %>
 

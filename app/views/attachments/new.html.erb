@@ -1,21 +1,23 @@
 <h1 class="text-center">Add new attachment</h1>
 
-<div class="col-md-offset-4 col-md-4 ">
-  <%= form_for @attachment, class: "form-horizontal" do |f| %>
+<div class="container pt-24">
+  <%= form_for @attachment do |f| %>
     <div class="form-group">
-      <%= f.label :upload, 'Attachment' %>
-      <%= f.file_field :upload, class: "form-control" %>
+      <%= f.label :upload, 'Attachment', class: "pb-8" %>
+      <%= f.file_field :upload, class: "form-control mb-24" %>
     </div>
     <div class="form-group">
-      <%= f.label :title, 'Title' %>
-      <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+      <%= f.label :title, 'Title', class: "pb-8"%>
+      <%= f.text_field :title, class: "form-control mb-24", placeholder: "Title" %>
     </div>
     <div class="form-group">
-      <%= f.label :discription, 'Description' %>
-      <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
+      <%= f.label :discription, 'Description', class: "pb-8"%>
+      <%= f.text_area :description, class: "form-control mb-24", placeholder: "Description" %>
     </div>
     <center class="form-group center">
-      <%= f.submit 'Add Attachment', class: "btn btn-primary"%>
+      <%= f.submit 'Add Attachment', class: "btn btn-primary mt-20"%>
     </center>
   <% end %>
 </div>
+
+<%= stylesheet_link_tag "admin" %>
