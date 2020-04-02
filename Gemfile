@@ -38,7 +38,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise', '~> 4.2'
 
-gem 'bootstrap', '~> 4.4', '>= 4.4.1'
+gem 'bootstrap-sass', '~> 3.4.1'
+
+gem 'jquery-rails'
+
+gem 'active_storage_validations'
+
+# Optional, to use :dimension validator or :aspect_ratio validator
+gem 'mini_magick', '>= 4.9.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
