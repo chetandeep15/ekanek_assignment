@@ -1,0 +1,21 @@
+<h1 class="text-center">Add new attachment</h1>
+
+<div class="col-md-offset-4 col-md-4 ">
+  <%= form_for @attachment, class: "form-horizontal" do |f| %>
+    <div class="form-group">
+      <%= f.label :upload, 'Attachment' %>
+      <%= f.file_field :upload, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :title, 'Title' %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :discription, 'Description' %>
+      <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
+    </div>
+    <center class="form-group center">
+      <%= f.submit 'Add Attachment', class: "btn btn-primary"%>
+    </center>
+  <% end %>
+</div>

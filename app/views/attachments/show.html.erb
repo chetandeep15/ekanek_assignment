@@ -1,0 +1,18 @@
+<div class="text-center"><h1>Attachment</h1></div>
+
+<div class="col-md-offset-5 col-md-4">
+  <%upload = @attachment.upload%>
+
+  <% if upload.image? %>
+    <%= image_tag(upload, width: 300) %>
+  <% elsif upload.video? %>
+    <%= video_tag(rails_blob_path(upload), controls: true)%>
+  <% elsif upload.audio?%>
+    <%= audio_tag(rails_blob_path(upload), controls: true)%>
+  <% else %>
+   <%= link_to("Download Your File", rails_blob_path(upload, disposition: :attachment)) %>
+  <% end %>
+  <div><%=@attachment.title%></div>
+  <div><%=@attachment.description%></div>
+</div>
+
