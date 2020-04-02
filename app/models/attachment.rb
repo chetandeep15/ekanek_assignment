@@ -5,11 +5,13 @@ class Attachment < ApplicationRecord
   has_many :link_codes, as: :linkable, dependent: :destroy
 
   validates :upload, presence: true,
-                     blob: { content_type: [:image, :audio, :video, :text] },
+                     content_type: ['image/png', 'image/jpg', 'image/jpeg',
+                      "audio/mpeg", "application/pdf", 'audio/midi', 'video/webm', 'video/mp4',
+                      "text/csv", "application/vnd.ms-excel"],
                      size: { less_than: 1.gigabytes , message: 'is not given between size' }
 
   after_create :create_share_link_code
-  after_create :set_title
+  before_create :set_title
 
   private
     def create_share_link_code
