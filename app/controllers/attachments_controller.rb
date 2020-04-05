@@ -5,7 +5,7 @@ class AttachmentsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def index
-    @attachments = current_user.attachments
+    @attachments = current_user.attachments.includes(:link_codes, upload_attachment: :blob)
   end
 
   def new
@@ -13,14 +13,15 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    @attachment = current_user.attachments.create(attachment_create_params)
+    @attachment = ProcessImageService.new(current_user, attachment_create_params).process_image
 
-    if @attachment.errors.any?
-      flash[:error] = @attachment.errors.full_messages.join("<br>")
-      render :new
-    else
+    if @attachment
       flash[:success] = "Attachment Created successfully"
       redirect_to attachments_path
+    else
+      flash[:error] = "Please upload png files only."
+      @attachment = Attachment.new
+      render :new
     end
   end
 

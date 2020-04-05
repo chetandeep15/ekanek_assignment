@@ -1,7 +1,7 @@
 <h1 class="text-center">Add new attachment</h1>
 
 <div class="container pt-24">
-  <%= form_for @attachment do |f| %>
+  <%= form_for @attachment, remote: true, html: {id: "attachment_form"} do |f| %>
     <div class="form-group">
       <%= f.label :upload, 'Attachment', class: "pb-8" %>
       <%= f.file_field :upload, class: "form-control mb-24" %>
@@ -15,9 +15,10 @@
       <%= f.text_area :description, class: "form-control mb-24", placeholder: "Description" %>
     </div>
     <center class="form-group center">
-      <%= f.submit 'Add Attachment', class: "btn btn-primary mt-20"%>
+      <%= f.submit 'Add Attachment', class: "btn btn-primary mt-20", id: 'attachment_form_button'%>
     </center>
   <% end %>
 </div>
 
-<%= stylesheet_link_tag "admin" %>
+<%= stylesheet_link_tag 'admin' %>
+<%= javascript_include_tag 'admin' %>
