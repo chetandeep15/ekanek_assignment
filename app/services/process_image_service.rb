@@ -7,7 +7,6 @@ class ProcessImageService
   end
 
   def process_image
-    byebug
     @base_64_image_data = params.delete(:upload)
     if is_valid_file_type?
       attachment = current_user.attachments.new(params)

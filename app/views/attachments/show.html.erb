@@ -4,7 +4,7 @@
     <div class="thumbnail">
       <%upload = @attachment.upload%>
       <% if upload.image? %>
-        <%= image_tag(upload, width: 300, class: "mt-18 image-border") %>
+        <%= image_tag(upload, class: "mt-18 image-border") %>
       <% elsif upload.video? %>
       <div class="pt-18 pl-28">
         <%= video_tag(rails_blob_path(upload), controls: true, width: 500)%>

@@ -19,7 +19,7 @@ class AttachmentsController < ApplicationController
       flash[:success] = "Attachment Created successfully"
       redirect_to attachments_path
     else
-      flash[:error] = "Please upload png files only."
+      flash.now[:error] = "Please upload png files only."
       @attachment = Attachment.new
       render :new
     end
