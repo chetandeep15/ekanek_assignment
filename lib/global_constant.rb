@@ -1,5 +1,5 @@
 module GlobalConstant
-  if RAils.env.production?
+  if Rails.env.production?
     env_constants = YAML.load_file(Rails.root.to_s + '/config/prod_constants.yml')['constants']
   else
     env_constants = YAML.load_file(Rails.root.to_s + '/config/constants.yml')['constants']

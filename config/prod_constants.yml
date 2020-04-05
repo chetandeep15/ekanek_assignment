@@ -1,0 +1,4 @@
+constants:
+
+  app:
+    url: https://ekanekchetan.herokuapp.com/
